@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 // Configuration from environment variables (Railway will set these)
-const API_KEY = process.env.WATSONX_API_KEY || 'azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUYUdaTEtzd1hNU1ltS0R0Wlc3RDJ5RU9ka0VucE5NcXh1RTlEcTZsUVA0PTpaQ3Ni';
+const API_KEY = process.env.WATSONX_API_KEY || 'azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUMHg4akRlRG9xc2Nqb2R2YVR0SHdtYkVZaE9LU05jYTlzMTZhdFVnZkZnPTpkK1VY';
 const INSTANCE_ID = process.env.WATSONX_INSTANCE_ID || '20251101-2338-1901-402d-f441a2b6b26b';
 const BASE_URL = `https://api.dl.watson-orchestrate.ibm.com/instances/${INSTANCE_ID}`;
 
