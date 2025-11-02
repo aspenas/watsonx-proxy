@@ -1,3 +1,8 @@
+// Load environment variables from .env file in development
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -5,7 +10,7 @@ const app = express();
 
 // Environment configuration with defaults
 const config = {
-    apiKey: process.env.WATSONX_API_KEY || 'azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUMHg4akRlRG9xc2Nqb2R2YVR0SHdtYkVZaE9LU05jYTlzMTZhdFVnZkZnPTpkK1VY',
+    apiKey: process.env.WATSONX_API_KEY,
     instanceId: process.env.WATSONX_INSTANCE_ID || '20251101-2338-1901-402d-f441a2b6b26b',
     port: process.env.PORT || 3000,
     nodeEnv: process.env.NODE_ENV || 'development',
@@ -17,6 +22,13 @@ const config = {
     requestTimeout: parseInt(process.env.REQUEST_TIMEOUT) || 30000,
     healthCheckInterval: parseInt(process.env.HEALTH_CHECK_INTERVAL) || 60000
 };
+
+// Check for required environment variables
+if (!config.apiKey) {
+    console.error('❌ ERROR: WATSONX_API_KEY environment variable is required');
+    console.error('Please set it in Railway dashboard or local .env file');
+    process.exit(1);
+}
 
 // API URLs
 const IAM_TOKEN_URL = 'https://iam.platform.saas.ibm.com/siusermgr/api/1.0/apikeys/token';
