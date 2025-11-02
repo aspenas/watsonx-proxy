@@ -181,7 +181,7 @@ app.get('/health', async (req, res) => {
 app.get('/', (req, res) => {
     res.json({
         service: 'Watsonx Orchestrate Proxy',
-        version: '1.1.0',
+        version: '1.2.0',
         status: 'running',
         endpoints: {
             health: '/health',
@@ -209,8 +209,13 @@ app.all('*', async (req, res) => {
             // Get fresh token
             const token = await getToken();
 
-            // Build target URL
-            const targetUrl = `${BASE_URL}${req.path}`;
+            // Build target URL - add instance ID if not present for orchestrate endpoints
+            let targetPath = req.path;
+            if (req.path.includes('/v1/orchestrate') && !req.path.includes('/instances/')) {
+                // Add instance ID to path for orchestrate endpoints
+                targetPath = `/instances/${config.instanceId}${req.path}`;
+            }
+            const targetUrl = `${BASE_URL}${targetPath}`;
 
             if (config.logLevel === 'debug') {
                 console.log(`📡 Proxying ${req.method} ${req.path} -> ${targetUrl}`);
@@ -325,7 +330,7 @@ if (config.healthCheckInterval > 0) {
 const server = app.listen(config.port, () => {
     console.log('');
     console.log('========================================');
-    console.log('🚀 Watsonx Orchestrate Proxy v1.1.0');
+    console.log('🚀 Watsonx Orchestrate Proxy v1.2.0');
     console.log('========================================');
     console.log(`✅ Server running on port ${config.port}`);
     console.log(`📍 Instance ID: ${config.instanceId}`);
