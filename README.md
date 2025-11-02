@@ -1,6 +1,6 @@
-# Watson Orchestrate Proxy for Tasklet.ai
+# Watson Orchestrate Proxy v1.2.0
 
-A production-ready proxy server that enables Tasklet.ai to connect to IBM Watson Orchestrate by handling JWT authentication transparently.
+A production-ready proxy server that enables seamless integration between Tasklet.ai and IBM Watson Orchestrate by handling JWT authentication and instance ID management transparently.
 
 ## 🚀 Quick Start
 
@@ -11,31 +11,34 @@ https://watsonx-proxy-production.up.railway.app
 
 ### Local Development
 ```bash
+cp .env.example .env
+# Edit .env with your API key
 npm install
 npm start
 ```
 
 ## ✨ Features
 
-- **Automatic JWT Token Management**: Handles token generation and refresh automatically
-- **Rate Limiting**: Built-in protection against abuse (100 req/min default)
-- **Retry Logic**: Automatic retry with exponential backoff for failed requests
-- **Health Monitoring**: Health check endpoints with detailed status
-- **CORS Support**: Configurable CORS for browser-based clients
+- **JWT Token Management**: Automatic token generation and refresh
+- **Instance ID Auto-injection**: Transparently adds instance ID to orchestrate API paths (v1.2.0)
+- **Token Caching**: Reduces API calls with intelligent refresh before expiration
+- **Rate Limiting**: Built-in protection (100 req/min default)
+- **Retry Logic**: Automatic retry with exponential backoff
+- **Health Monitoring**: Detailed health checks with token validation
+- **CORS Support**: Configurable cross-origin resource sharing
+- **Security First**: No hardcoded API keys, environment variables only
 - **Graceful Shutdown**: Proper cleanup on termination
-- **Production Ready**: Optimized for Railway deployment with v1.1.0 improvements
-- Error handling and logging
-- Railway deployment ready
 
-## Environment Variables
+## 🔒 Environment Variables
 
-Set these in Railway dashboard:
+**Required** - Set these in Railway dashboard or `.env` file:
 
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `WATSONX_API_KEY` | Your Watsonx API key | (included in code) |
-| `WATSONX_INSTANCE_ID` | Your Watsonx instance ID | `20251101-2338-1901-402d-f441a2b6b26b` |
-| `PORT` | Server port | `3000` |
+| Variable | Description | Required |
+|----------|-------------|----------|
+| `WATSONX_API_KEY` | Your IBM Watson API key | ✅ Yes |
+| `WATSONX_INSTANCE_ID` | Your Watson instance ID | ✅ Yes |
+| `PORT` | Server port | No (default: 3000) |
+| `NODE_ENV` | Environment (development/production) | No |
 
 ## Endpoints
 
