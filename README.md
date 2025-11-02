@@ -1,13 +1,29 @@
-# Watsonx Orchestrate Proxy for Tasklet
+# Watson Orchestrate Proxy for Tasklet.ai
 
-This proxy server handles JWT authentication for IBM Watsonx Orchestrate API, designed to work with Tasklet.ai connections.
+A production-ready proxy server that enables Tasklet.ai to connect to IBM Watson Orchestrate by handling JWT authentication transparently.
 
-## Features
+## 🚀 Quick Start
 
-- Automatic JWT token generation and refresh
-- Token caching (refreshes 5 minutes before expiry)
-- CORS enabled for browser-based clients
-- Health check endpoints
+### Production URL
+```
+https://watsonx-proxy-production.up.railway.app
+```
+
+### Local Development
+```bash
+npm install
+npm start
+```
+
+## ✨ Features
+
+- **Automatic JWT Token Management**: Handles token generation and refresh automatically
+- **Rate Limiting**: Built-in protection against abuse (100 req/min default)
+- **Retry Logic**: Automatic retry with exponential backoff for failed requests
+- **Health Monitoring**: Health check endpoints with detailed status
+- **CORS Support**: Configurable CORS for browser-based clients
+- **Graceful Shutdown**: Proper cleanup on termination
+- **Production Ready**: Optimized for Railway deployment with v1.1.0 improvements
 - Error handling and logging
 - Railway deployment ready
 
