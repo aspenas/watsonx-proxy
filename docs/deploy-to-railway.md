@@ -29,15 +29,17 @@ git push -u origin main
 4. Select `watsonx-proxy` repository
 5. Railway will auto-detect Node.js and start deployment
 
-### Step 3: Set Environment Variables (Optional)
+### Step 3: Set Environment Variables (REQUIRED)
 
 In Railway dashboard, go to Variables tab and add:
 ```
-WATSONX_API_KEY=azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi85NzU3LTA2YTBkNmVjMDkwNTpUYUdaTEtzd1hNU1ltS0R0Wlc3RDJ5RU9ka0VucE5NcXh1RTlEcTZsUVA0PTpaQ3Ni
+WATSONX_API_KEY=<your-api-key-from-ibm>
 WATSONX_INSTANCE_ID=20251101-2338-1901-402d-f441a2b6b26b
+NODE_ENV=production
+PORT=3000
 ```
 
-(These are already set as defaults in the code, so this is optional)
+**Important**: The WATSONX_API_KEY is required and must be obtained from IBM Watson
 
 ### Step 4: Get Your URL
 

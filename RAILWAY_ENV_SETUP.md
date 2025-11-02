@@ -12,7 +12,7 @@ You need to set these environment variables in Railway to make the proxy work in
 4. Add these variables:
 
 ```
-WATSONX_API_KEY=azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUMHg4akRlRG9xc2Nqb2R2YVR0SHdtYkVZaE9LU05jYTlzMTZhdFVnZkZnPTpkK1VY
+WATSONX_API_KEY=<your-api-key-from-ibm>
 WATSONX_INSTANCE_ID=20251101-2338-1901-402d-f441a2b6b26b
 NODE_ENV=production
 PORT=3000
@@ -33,7 +33,7 @@ If you have a Railway token:
 # OR manually:
 export RAILWAY_TOKEN=YOUR_TOKEN_HERE
 railway link --project 270595cf-7ade-4443-a715-8ae5619bc690
-railway variables set WATSONX_API_KEY="azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUMHg4akRlRG9xc2Nqb2R2YVR0SHdtYkVZaE9LU05jYTlzMTZhdFVnZkZnPTpkK1VY"
+railway variables set WATSONX_API_KEY="<your-api-key-from-ibm>"
 railway variables set WATSONX_INSTANCE_ID="20251101-2338-1901-402d-f441a2b6b26b"
 railway variables set NODE_ENV="production"
 railway variables set PORT="3000"
@@ -52,7 +52,7 @@ curl -X POST "https://backboard.railway.app/graphql/v2" \
   -H "Authorization: Bearer $RAILWAY_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "query": "mutation { variableUpsert(input: { projectId: \"'$PROJECT_ID'\", name: \"WATSONX_API_KEY\", value: \"azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUMHg4akRlRG9xc2Nqb2R2YVR0SHdtYkVZaE9LU05jYTlzMTZhdFVnZkZnPTpkK1VY\" }) }"
+    "query": "mutation { variableUpsert(input: { projectId: \"'$PROJECT_ID'\", name: \"WATSONX_API_KEY\", value: \"<your-api-key-here>\" }) }"
   }'
 ```
 

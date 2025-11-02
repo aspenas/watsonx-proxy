@@ -1,8 +1,15 @@
 #!/bin/bash
 
 # Set Railway environment variables using GraphQL API
+# Usage: ./set-railway-vars.sh <RAILWAY_TOKEN>
 
-RAILWAY_TOKEN="9e946487-0eec-402d-ac2d-4e5d8c743c0c"
+if [ -z "$1" ]; then
+    echo "❌ ERROR: Railway token not provided"
+    echo "Usage: ./set-railway-vars.sh <RAILWAY_TOKEN>"
+    exit 1
+fi
+
+RAILWAY_TOKEN="$1"
 PROJECT_ID="270595cf-7ade-4443-a715-8ae5619bc690"
 
 # Read API key from .env file

@@ -60,12 +60,16 @@ if [ -f .env ]; then
         echo "✅ WATSONX_INSTANCE_ID set"
     fi
 else
-    echo "⚠️ .env file not found, setting variables manually..."
+    echo "⚠️ .env file not found"
+    echo ""
+    echo "Please enter your WATSONX_API_KEY:"
+    read -s API_KEY
+    echo ""
 
-    # Set variables manually
-    railway variables set WATSONX_API_KEY="azE6dXNyX2FjMTUwODM4LWZkNWItM2M0Zi05NzU3LTA2YTBkNmVjMDkwNTpUMHg4akRlRG9xc2Nqb2R2YVR0SHdtYkVZaE9LU05jYTlzMTZhdFVnZkZnPTpkK1VY"
+    # Set variables with user input
+    railway variables set WATSONX_API_KEY="$API_KEY"
     railway variables set WATSONX_INSTANCE_ID="20251101-2338-1901-402d-f441a2b6b26b"
-    echo "✅ Variables set from defaults"
+    echo "✅ Variables set from user input"
 fi
 
 # Set NODE_ENV to production
